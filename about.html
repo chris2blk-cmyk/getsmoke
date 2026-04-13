@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us – GetSmoke | Factory-Direct Native Cigarettes Canada</title>
+  <meta name="description" content="Learn about GetSmoke — a Canadian manufacturer of native cigarettes, made on First Nations land and shipped directly to you." />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Age Verification Modal -->
+  <div id="age-modal" class="age-modal">
+    <div class="age-modal-inner">
+      <div class="age-modal-logo">GET<span>SMOKE</span></div>
+      <h2>Age Verification Required</h2>
+      <p>This website sells tobacco products. You must be 19 years of age or older to enter.</p>
+      <div class="age-buttons">
+        <button class="btn-age-yes" onclick="confirmAge()">I Am 19 or Older</button>
+        <button class="btn-age-no" onclick="denyAge()">I Am Under 19</button>
+      </div>
+      <p class="age-warning">⚠ Tobacco use causes serious health effects.</p>
+    </div>
+  </div>
+
+  <!-- Notice Bar -->
+  <div class="notice-bar">
+    <p>🚚 Free shipping on orders over $100 · Ships nationwide with tracking</p>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <nav class="nav container">
+      <a href="index.html" class="logo">GET<span>SMOKE</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="delivery.html">Delivery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="shop.html" class="btn-primary">Order Now</a>
+      <button class="hamburger" onclick="toggleMenu()">&#9776;</button>
+    </nav>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="delivery.html">Delivery</a>
+      <a href="contact.html">Contact</a>
+      <a href="shop.html" class="btn-primary">Order Now</a>
+    </div>
+  </header>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-tag">Our Story</span>
+      <h1>We Make It. We Ship It.</h1>
+      <p>GetSmoke was built on one idea: give Canadians direct access to quality native cigarettes at honest prices, with no middleman in between.</p>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about-section">
+    <div class="container">
+
+      <!-- Story -->
+      <div class="about-grid">
+        <div class="about-text">
+          <span class="section-tag">Who We Are</span>
+          <h2>Born on the Reserve. Built for Canada.</h2>
+          <p>GetSmoke is a Canadian manufacturer of native cigarettes, operating on First Nations land in Ontario. We grow, process, and package our tobacco products entirely within Canada — and we ship them directly to your door, anywhere across the country.</p>
+          <p>We started GetSmoke because we were frustrated with the way tobacco was sold in Canada. Layers of resellers, distributor markups, and retail margins meant smokers were paying two or three times what the product actually cost to make. We decided to cut all of that out.</p>
+          <p>Today, when you order from GetSmoke, you're buying from the people who made your cigarettes — not a store that bought them from someone who bought them from someone else. That's the GetSmoke difference.</p>
+        </div>
+        <div class="about-visual">
+          <div class="about-stat">
+            <strong>2019</strong>
+            <span>Founded</span>
+          </div>
+          <div class="about-stat">
+            <strong>12k+</strong>
+            <span>Orders shipped</span>
+          </div>
+          <div class="about-stat">
+            <strong>10</strong>
+            <span>Provinces served</span>
+          </div>
+          <div class="about-stat">
+            <strong>100%</strong>
+            <span>Canadian tobacco</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Values -->
+      <div class="section-header">
+        <h2>What We Stand For</h2>
+        <p>Three principles behind everything we do</p>
+      </div>
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-icon">🌿</div>
+          <h3>Canadian Made</h3>
+          <p>Every cigarette is produced on First Nations land in Canada, using tobacco grown right here. We take pride in supporting local Indigenous communities and Canadian agriculture.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">💰</div>
+          <h3>Fair Pricing</h3>
+          <p>Because we're the manufacturer, not a reseller, we can offer prices that no retail store can match. You pay what the product is worth — nothing more.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">🤝</div>
+          <h3>Honest Service</h3>
+          <p>Discreet packaging. Real tracking. Straightforward communication. We treat every order like it's going to a friend — because repeat customers are how we built this business.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="shipping-banner">
+    <div class="container">
+      <h2>Ready to Order?</h2>
+      <p>Browse our full lineup of native cigarettes and get them delivered to your door.</p>
+      <a href="shop.html" class="btn-primary btn-large">Shop Now</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">GET<span>SMOKE</span></a>
+        <p>Factory-direct native cigarettes delivered across Canada. We're the source, not the middleman.</p>
+        <small>⚠ Tobacco products are only sold to persons 19 years of age or older. Tobacco use causes serious health effects.</small>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="shop.html">Shop All</a>
+        <a href="about.html">About Us</a>
+        <a href="delivery.html">Delivery Info</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-links">
+        <h4>Help</h4>
+        <a href="contact.html#faq">FAQ</a>
+        <a href="contact.html#tracking">Track My Order</a>
+        <a href="contact.html">Returns</a>
+        <a href="contact.html">Support</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p>📧 orders@getsmoke.ca</p>
+        <p>🕐 Mon–Fri, 9am–6pm EST</p>
+        <p>📍 Ships from Ontario, Canada</p>
+      </div>
+    </div>
+    <div class="footer-bottom container">
+      <p>© 2024 GetSmoke.ca · All rights reserved · <a href="#">Privacy Policy</a> · <a href="#">Terms of Service</a></p>
+      <p><small>For adults 19+ only. Tobacco use is harmful to your health.</small></p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

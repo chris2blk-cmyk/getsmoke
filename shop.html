@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop – GetSmoke | Buy Native Cigarettes Online in Canada</title>
+  <meta name="description" content="Buy factory-direct native cigarettes online. Full flavour, light, and ultra-light options. Delivered across Canada with tracking." />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Age Verification Modal -->
+  <div id="age-modal" class="age-modal">
+    <div class="age-modal-inner">
+      <div class="age-modal-logo">GET<span>SMOKE</span></div>
+      <h2>Age Verification Required</h2>
+      <p>This website sells tobacco products. You must be 19 years of age or older to enter.</p>
+      <div class="age-buttons">
+        <button class="btn-age-yes" onclick="confirmAge()">I Am 19 or Older</button>
+        <button class="btn-age-no" onclick="denyAge()">I Am Under 19</button>
+      </div>
+      <p class="age-warning">⚠ Tobacco use causes serious health effects.</p>
+    </div>
+  </div>
+
+  <!-- Notice Bar -->
+  <div class="notice-bar">
+    <p>🚚 Free shipping on orders over $100 · Ships nationwide with tracking</p>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <nav class="nav container">
+      <a href="index.html" class="logo">GET<span>SMOKE</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html" class="active">Shop</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="delivery.html">Delivery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="shop.html" class="btn-primary">Order Now</a>
+      <button class="hamburger" onclick="toggleMenu()">&#9776;</button>
+    </nav>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="delivery.html">Delivery</a>
+      <a href="contact.html">Contact</a>
+      <a href="shop.html" class="btn-primary">Order Now</a>
+    </div>
+  </header>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <h1>Shop All Products</h1>
+      <p>Factory-direct native cigarettes. All made on First Nations land with 100% Canadian tobacco.</p>
+    </div>
+  </section>
+
+  <!-- Shop Section -->
+  <section class="shop-section">
+    <div class="container">
+
+      <!-- Toolbar -->
+      <div class="shop-toolbar">
+        <h2>Showing 10 products</h2>
+        <div class="filter-tabs">
+          <button class="filter-tab active" data-filter="all">All</button>
+          <button class="filter-tab" data-filter="full">Full Flavour</button>
+          <button class="filter-tab" data-filter="light">Light</button>
+          <button class="filter-tab" data-filter="ultra">Ultra Light</button>
+          <button class="filter-tab" data-filter="king">King Size</button>
+        </div>
+      </div>
+
+      <!-- Products Grid -->
+      <div class="products-grid">
+
+        <div class="product-card" data-filter="full">
+          <div class="product-badge">Best Seller</div>
+          <div class="product-img">🚬</div>
+          <div class="product-info">
+            <h3>Reserve Blend</h3>
+            <p>Full Flavour · King Size · 200 cigs</p>
+            <div class="product-footer">
+              <span class="price">$27.99 <small>/carton</small></span>
+              <a href="order.html" class="btn-cart">Order</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-filter="light">
+          <div class="product-img">🚬</div>
+          <div class="product-info">
+            <h3>Native Gold</h3>
+            <p>Light · King Size · 200 cigs</p>
+            <div class="product-footer">
+              <span class="price">$26.99 <small>/carton</small></span>
+              <a href="order.html" class="btn-cart">Order</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-filter="ultra">
+          <div class="product-badge new-badge">New</div>
+          <div class="product-img">🚬</div>
+          <div class="product-info">
+            <h3>Smooth Reserve</h3>
+            <p>Ultra Light · Regular · 200 cigs</p>
+            <div class="product-footer">
+              <span class="price">$25.99 <small>/carton</small></span>
+              <a href="order.html" class="btn-cart">Order</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-filter="full">
+          <div class="product-img">🚬</div>
+          <div class="product-info">
+            <h3>Classic Cut</h3>
+            <p>Full Flavour · Regular · 200 cigs</p>
+            <div class="product-footer">
+              <span class="price">$27.99 <small>/carton</small></span>
+              <a href="order.html" class="btn-cart">Order</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-filter="light">
+          <div class="product-img">🚬</div>
+          <div class="product-info">
+            <h3>Northern Light</h3>
+            <p>Light · Regular · 200 cigs</p>
+            <div class="product-footer">
+              <span class="price">$26.49 <small>/carton</small></span>
+              <a href="order.html" class="btn-cart">Order</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-filter="full">
+          <div class="product-img">🚬</div>
+          <div class="product-info">
+            <h3>Tribal Gold</h3>
+            <p>Full Flavour · Regular · 200 cigs</p>
+            <div class="product-footer">
+              <span class="price">$28.49 <small>/carton</small></span>
+              <a href="order.html" class="btn-cart">Order</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-filter="king">
+          <div class="product-badge">Popular</div>
+          <div class="product-img">🚬</div>
+          <div class="product-info">
+            <h3>King Reserve</h3>
+            <p>Full Flavour · King Size · 200 cigs</p>
+            <div class="product-footer">
+              <span class="price">$28.99 <small>/carton</small></span>
+              <a href="order.html" class="btn-cart">Order</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-filter="ultra">
+          <div class="product-img">🚬</div>
+          <div class="product-info">
+            <h3>Cloud Nine</h3>
+            <p>Ultra Light · King Size · 200 cigs</p>
+            <div class="product-footer">
+              <span class="price">$25.49 <small>/carton</small></span>
+              <a href="order.html" class="btn-cart">Order</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-filter="light">
+          <div class="product-img">🚬</div>
+          <div class="product-info">
+            <h3>Silver Leaf</h3>
+            <p>Light · King Size · 200 cigs</p>
+            <div class="product-footer">
+              <span class="price">$26.99 <small>/carton</small></span>
+              <a href="order.html" class="btn-cart">Order</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-filter="full">
+          <div class="product-badge new-badge">New</div>
+          <div class="product-img">🚬</div>
+          <div class="product-info">
+            <h3>Harvest Select</h3>
+            <p>Full Flavour · Regular · 200 cigs</p>
+            <div class="product-footer">
+              <span class="price">$27.49 <small>/carton</small></span>
+              <a href="order.html" class="btn-cart">Order</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Bulk Order Banner -->
+  <section class="shipping-banner">
+    <div class="container">
+      <h2>Ordering in Bulk?</h2>
+      <p>Contact us for volume pricing on orders of 5+ cartons.</p>
+      <a href="contact.html" class="btn-primary btn-large">Contact Us</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">GET<span>SMOKE</span></a>
+        <p>Factory-direct native cigarettes delivered across Canada. We're the source, not the middleman.</p>
+        <small>⚠ Tobacco products are only sold to persons 19 years of age or older. Tobacco use causes serious health effects.</small>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="shop.html">Shop All</a>
+        <a href="about.html">About Us</a>
+        <a href="delivery.html">Delivery Info</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-links">
+        <h4>Help</h4>
+        <a href="contact.html#faq">FAQ</a>
+        <a href="contact.html#tracking">Track My Order</a>
+        <a href="contact.html">Returns</a>
+        <a href="contact.html">Support</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p>📧 orders@getsmoke.ca</p>
+        <p>🕐 Mon–Fri, 9am–6pm EST</p>
+        <p>📍 Ships from Ontario, Canada</p>
+      </div>
+    </div>
+    <div class="footer-bottom container">
+      <p>© 2024 GetSmoke.ca · All rights reserved · <a href="#">Privacy Policy</a> · <a href="#">Terms of Service</a></p>
+      <p><small>For adults 19+ only. Tobacco use is harmful to your health.</small></p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

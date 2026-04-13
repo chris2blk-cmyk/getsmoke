@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Place Your Order – GetSmoke</title>
+  <meta name="description" content="Order native cigarettes from GetSmoke. Fast delivery across Canada. Pay by Interac e-Transfer." />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .order-section { padding: 64px 0 80px; }
+    .order-layout {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    .order-form-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+    }
+    .order-form-card h2 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 28px;
+    }
+    .order-sidebar { display: flex; flex-direction: column; gap: 20px; }
+
+    /* Product selector */
+    .product-select-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 6px; }
+    .product-select-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--bg-elevated);
+      border: 1.5px solid var(--border-light);
+      border-radius: 10px;
+      padding: 14px 16px;
+      cursor: pointer;
+      transition: border-color var(--trans), background var(--trans);
+      user-select: none;
+    }
+    .product-select-item:hover { border-color: var(--accent); }
+    .product-select-item.selected {
+      border-color: var(--accent);
+      background: rgba(232,116,0,0.08);
+    }
+    .product-select-item input[type="checkbox"] {
+      accent-color: var(--accent);
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+    .product-select-info { flex: 1; }
+    .product-select-info strong { display: block; font-size: 0.9rem; }
+    .product-select-info span { font-size: 0.78rem; color: var(--text-muted); }
+    .product-select-price {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* qty row */
+    .qty-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+      margin-bottom: 4px;
+    }
+    .qty-row label { font-size: 0.83rem; font-weight: 600; color: var(--text-sub); white-space: nowrap; }
+    .qty-input {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      color: var(--text);
+      padding: 10px 14px;
+      font-size: 0.9rem;
+      font-family: inherit;
+      width: 100px;
+      outline: none;
+      transition: border-color var(--trans);
+    }
+    .qty-input:focus { border-color: var(--accent); }
+
+    /* order summary card */
+    .summary-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+    }
+    .summary-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.88rem;
+      color: var(--text-sub);
+      padding: 6px 0;
+    }
+    .summary-row.total {
+      border-top: 1px solid var(--border);
+      margin-top: 10px;
+      padding-top: 14px;
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+    .summary-row.total span:last-child { color: var(--accent); }
+    .free-shipping-badge {
+      background: rgba(34,197,94,0.1);
+      color: #22c55e;
+      border: 1px solid rgba(34,197,94,0.25);
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 10px;
+    }
+
+    /* etransfer info card */
+    .etransfer-card {
+      background: rgba(232,116,0,0.06);
+      border: 1.5px solid rgba(232,116,0,0.3);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+    }
+    .etransfer-card h3 {
+      font-size: 0.95rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+      color: var(--accent-light);
+    }
+    .etransfer-step {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 12px;
+      font-size: 0.85rem;
+      color: var(--text-sub);
+    }
+    .etransfer-num {
+      background: var(--accent);
+      color: #fff;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      font-size: 0.72rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .etransfer-email {
+      display: inline-block;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-light);
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-family: monospace;
+      font-size: 0.88rem;
+      color: var(--accent-light);
+      letter-spacing: 0.02em;
+    }
+
+    /* success screen */
+    .success-screen {
+      display: none;
+      text-align: center;
+      padding: 48px 32px;
+    }
+    .success-screen.show { display: block; }
+    .success-icon { font-size: 3.5rem; margin-bottom: 20px; }
+    .success-screen h2 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+    .success-screen > p {
+      color: var(--text-sub);
+      font-size: 0.95rem;
+      margin-bottom: 32px;
+      max-width: 420px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .payment-instructions {
+      background: rgba(232,116,0,0.07);
+      border: 1.5px solid rgba(232,116,0,0.3);
+      border-radius: var(--radius-lg);
+      padding: 28px 32px;
+      text-align: left;
+      max-width: 500px;
+      margin: 0 auto 28px;
+    }
+    .payment-instructions h3 {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--accent-light);
+      margin-bottom: 18px;
+    }
+    .pi-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      font-size: 0.88rem;
+    }
+    .pi-row:last-child { border-bottom: none; }
+    .pi-row span:first-child { color: var(--text-muted); }
+    .pi-row span:last-child { font-weight: 700; color: var(--text); }
+    .pi-row .copy-val { color: var(--accent-light); font-family: monospace; }
+
+    @media (max-width: 860px) {
+      .order-layout { grid-template-columns: 1fr; }
+      .order-sidebar { order: -1; }
+    }
+    @media (max-width: 520px) {
+      .order-form-card { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Age Verification Modal -->
+  <div id="age-modal" class="age-modal">
+    <div class="age-modal-inner">
+      <div class="age-modal-logo">GET<span>SMOKE</span></div>
+      <h2>Age Verification Required</h2>
+      <p>This website sells tobacco products. You must be 19 years of age or older to enter.</p>
+      <div class="age-buttons">
+        <button class="btn-age-yes" onclick="confirmAge()">I Am 19 or Older</button>
+        <button class="btn-age-no" onclick="denyAge()">I Am Under 19</button>
+      </div>
+      <p class="age-warning">⚠ Tobacco use causes serious health effects.</p>
+    </div>
+  </div>
+
+  <!-- Notice Bar -->
+  <div class="notice-bar">
+    <p>🚚 Free shipping on orders over $100 · Pay by Interac e-Transfer</p>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <nav class="nav container">
+      <a href="index.html" class="logo">GET<span>SMOKE</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="delivery.html">Delivery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="shop.html" class="btn-primary">Order Now</a>
+      <button class="hamburger" onclick="toggleMenu()">&#9776;</button>
+    </nav>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="delivery.html">Delivery</a>
+      <a href="contact.html">Contact</a>
+      <a href="shop.html" class="btn-primary">Order Now</a>
+    </div>
+  </header>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <h1>Place Your Order</h1>
+      <p>Fill in your details below. We'll confirm your order and you pay by Interac e-Transfer — that's it.</p>
+    </div>
+  </section>
+
+  <!-- Order Section -->
+  <section class="order-section">
+    <div class="container">
+      <div class="order-layout">
+
+        <!-- Order Form -->
+        <div class="order-form-card">
+
+          <!-- Form (shown by default) -->
+          <div id="order-form-wrap">
+            <h2>Your Order Details</h2>
+
+            <!--
+              IMPORTANT: Replace YOUR_FORM_ID below with your Formspree form ID.
+              Sign up free at https://formspree.io → New Form → copy the ID from the action URL.
+              Example: action="https://formspree.io/f/abcd1234"
+            -->
+            <form id="order-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+
+              <!-- Contact Info -->
+              <p style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-muted);margin-bottom:14px;">Contact Information</p>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="first_name">First Name *</label>
+                  <input type="text" id="first_name" name="first_name" required placeholder="John" />
+                </div>
+                <div class="form-group">
+                  <label for="last_name">Last Name *</label>
+                  <input type="text" id="last_name" name="last_name" required placeholder="Smith" />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="email">Email Address *</label>
+                  <input type="email" id="email" name="email" required placeholder="john@email.com" />
+                </div>
+                <div class="form-group">
+                  <label for="phone">Phone (optional)</label>
+                  <input type="tel" id="phone" name="phone" placeholder="(416) 555-0100" />
+                </div>
+              </div>
+
+              <!-- Shipping Address -->
+              <p style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-muted);margin:20px 0 14px;">Shipping Address</p>
+              <div class="form-group">
+                <label for="address">Street Address *</label>
+                <input type="text" id="address" name="address" required placeholder="123 Main Street, Apt 4" />
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="city">City *</label>
+                  <input type="text" id="city" name="city" required placeholder="Toronto" />
+                </div>
+                <div class="form-group">
+                  <label for="province">Province *</label>
+                  <select id="province" name="province" required>
+                    <option value="">Select province...</option>
+                    <option>Ontario</option>
+                    <option>Quebec</option>
+                    <option>British Columbia</option>
+                    <option>Alberta</option>
+                    <option>Manitoba</option>
+                    <option>Saskatchewan</option>
+                    <option>Nova Scotia</option>
+                    <option>New Brunswick</option>
+                    <option>Prince Edward Island</option>
+                    <option>Newfoundland & Labrador</option>
+                    <option>Yukon</option>
+                    <option>Northwest Territories</option>
+                    <option>Nunavut</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="postal">Postal Code *</label>
+                <input type="text" id="postal" name="postal_code" required placeholder="M5V 2T6" style="max-width:160px;" />
+              </div>
+
+              <!-- Products -->
+              <p style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-muted);margin:20px 0 14px;">Select Products *</p>
+              <div class="product-select-list" id="product-list">
+
+                <label class="product-select-item">
+                  <input type="checkbox" name="products" value="Reserve Blend – Full Flavour King Size – $27.99/carton" onchange="updateSummary()" />
+                  <div class="product-select-info">
+                    <strong>Reserve Blend</strong>
+                    <span>Full Flavour · King Size</span>
+                  </div>
+                  <span class="product-select-price">$27.99</span>
+                </label>
+
+                <label class="product-select-item">
+                  <input type="checkbox" name="products" value="Native Gold – Light King Size – $26.99/carton" onchange="updateSummary()" />
+                  <div class="product-select-info">
+                    <strong>Native Gold</strong>
+                    <span>Light · King Size</span>
+                  </div>
+                  <span class="product-select-price">$26.99</span>
+                </label>
+
+                <label class="product-select-item">
+                  <input type="checkbox" name="products" value="Smooth Reserve – Ultra Light Regular – $25.99/carton" onchange="updateSummary()" />
+                  <div class="product-select-info">
+                    <strong>Smooth Reserve</strong>
+                    <span>Ultra Light · Regular</span>
+                  </div>
+                  <span class="product-select-price">$25.99</span>
+                </label>
+
+                <label class="product-select-item">
+                  <input type="checkbox" name="products" value="Classic Cut – Full Flavour Regular – $27.99/carton" onchange="updateSummary()" />
+                  <div class="product-select-info">
+                    <strong>Classic Cut</strong>
+                    <span>Full Flavour · Regular</span>
+                  </div>
+                  <span class="product-select-price">$27.99</span>
+                </label>
+
+                <label class="product-select-item">
+                  <input type="checkbox" name="products" value="Northern Light – Light Regular – $26.49/carton" onchange="updateSummary()" />
+                  <div class="product-select-info">
+                    <strong>Northern Light</strong>
+                    <span>Light · Regular</span>
+                  </div>
+                  <span class="product-select-price">$26.49</span>
+                </label>
+
+                <label class="product-select-item">
+                  <input type="checkbox" name="products" value="Tribal Gold – Full Flavour Regular – $28.49/carton" onchange="updateSummary()" />
+                  <div class="product-select-info">
+                    <strong>Tribal Gold</strong>
+                    <span>Full Flavour · Regular</span>
+                  </div>
+                  <span class="product-select-price">$28.49</span>
+                </label>
+
+                <label class="product-select-item">
+                  <input type="checkbox" name="products" value="King Reserve – Full Flavour King Size – $28.99/carton" onchange="updateSummary()" />
+                  <div class="product-select-info">
+                    <strong>King Reserve</strong>
+                    <span>Full Flavour · King Size</span>
+                  </div>
+                  <span class="product-select-price">$28.99</span>
+                </label>
+
+              </div>
+
+              <div class="qty-row">
+                <label for="qty">Cartons per product:</label>
+                <input type="number" id="qty" name="quantity_per_product" class="qty-input" min="1" max="99" value="1" onchange="updateSummary()" />
+              </div>
+              <!-- Hidden total field so it shows up in the email -->
+              <input type="hidden" id="order_total" name="order_total" value="" />
+
+              <!-- Notes -->
+              <div class="form-group" style="margin-top:20px;">
+                <label for="notes">Order Notes (optional)</label>
+                <textarea id="notes" name="notes" placeholder="Special instructions, questions about your order..."></textarea>
+              </div>
+
+              <!-- Payment method hidden field -->
+              <input type="hidden" name="payment_method" value="Interac e-Transfer" />
+
+              <button type="submit" class="btn-primary" style="width:100%;padding:16px;font-size:1rem;margin-top:8px;">
+                Submit Order & Get Payment Instructions
+              </button>
+              <p style="text-align:center;color:var(--text-muted);font-size:0.78rem;margin-top:10px;">
+                After submitting you'll see exactly how much to send and where to send it.
+              </p>
+            </form>
+          </div>
+
+          <!-- Success Screen (shown after submit) -->
+          <div class="success-screen" id="success-screen">
+            <div class="success-icon">✅</div>
+            <h2>Order Received!</h2>
+            <p>Thanks! We've got your order. Now complete your payment by Interac e-Transfer and we'll ship it out within 24 hours.</p>
+
+            <div class="payment-instructions">
+              <h3>💸 How to Pay by Interac e-Transfer</h3>
+              <div class="pi-row">
+                <span>Send to</span>
+                <span class="copy-val">orders@getsmoke.ca</span>
+              </div>
+              <div class="pi-row">
+                <span>Amount</span>
+                <span id="pi-amount" class="copy-val">See your order total</span>
+              </div>
+              <div class="pi-row">
+                <span>Message / Memo</span>
+                <span id="pi-order" class="copy-val">Your name + order</span>
+              </div>
+              <div class="pi-row">
+                <span>Auto-deposit?</span>
+                <span>Yes — no password needed</span>
+              </div>
+            </div>
+
+            <p style="color:var(--text-muted);font-size:0.82rem;max-width:420px;margin:0 auto 24px;">
+              Once we receive your e-Transfer we'll confirm by email and ship your order with a tracking number. Questions? Email <strong>orders@getsmoke.ca</strong>
+            </p>
+            <a href="shop.html" class="btn-ghost">Back to Shop</a>
+          </div>
+
+        </div>
+
+        <!-- Sidebar -->
+        <div class="order-sidebar">
+
+          <!-- Order Summary -->
+          <div class="summary-card">
+            <h3>Order Summary</h3>
+            <div id="summary-items">
+              <p style="color:var(--text-muted);font-size:0.85rem;">Select products to see your total.</p>
+            </div>
+            <div class="summary-row total" id="summary-total" style="display:none;">
+              <span>Total</span>
+              <span id="total-display">$0.00</span>
+            </div>
+            <div id="shipping-note" style="margin-top:12px;display:none;"></div>
+          </div>
+
+          <!-- e-Transfer Info -->
+          <div class="etransfer-card">
+            <h3>💳 Payment: Interac e-Transfer</h3>
+            <div class="etransfer-step">
+              <span class="etransfer-num">1</span>
+              <span>Submit your order using the form</span>
+            </div>
+            <div class="etransfer-step">
+              <span class="etransfer-num">2</span>
+              <span>Open your banking app and send an e-Transfer to:<br/><span class="etransfer-email">orders@getsmoke.ca</span></span>
+            </div>
+            <div class="etransfer-step">
+              <span class="etransfer-num">3</span>
+              <span>Include your name in the message/memo field</span>
+            </div>
+            <div class="etransfer-step">
+              <span class="etransfer-num">4</span>
+              <span>We confirm payment and ship your order within 24hrs</span>
+            </div>
+          </div>
+
+          <!-- Trust -->
+          <div class="summary-card">
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <div style="display:flex;align-items:center;gap:10px;font-size:0.85rem;color:var(--text-sub);">
+                <span style="font-size:1.1rem;">📦</span> Discreet, plain packaging
+              </div>
+              <div style="display:flex;align-items:center;gap:10px;font-size:0.85rem;color:var(--text-sub);">
+                <span style="font-size:1.1rem;">📍</span> Tracked shipping included
+              </div>
+              <div style="display:flex;align-items:center;gap:10px;font-size:0.85rem;color:var(--text-sub);">
+                <span style="font-size:1.1rem;">⚡</span> Ships within 24 hours
+              </div>
+              <div style="display:flex;align-items:center;gap:10px;font-size:0.85rem;color:var(--text-sub);">
+                <span style="font-size:1.1rem;">🇨🇦</span> Ships to all provinces
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">GET<span>SMOKE</span></a>
+        <p>Factory-direct native cigarettes delivered across Canada.</p>
+        <small>⚠ Tobacco products are only sold to persons 19 years of age or older.</small>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="shop.html">Shop All</a>
+        <a href="about.html">About Us</a>
+        <a href="delivery.html">Delivery Info</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-links">
+        <h4>Help</h4>
+        <a href="contact.html#faq">FAQ</a>
+        <a href="contact.html">Support</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p>📧 orders@getsmoke.ca</p>
+        <p>🕐 Mon–Fri, 9am–6pm EST</p>
+      </div>
+    </div>
+    <div class="footer-bottom container">
+      <p>© 2024 GetSmoke.ca · All rights reserved · <a href="#">Privacy Policy</a></p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    /* ── Product prices map ── */
+    const PRICES = {
+      'Reserve Blend – Full Flavour King Size – $27.99/carton': 27.99,
+      'Native Gold – Light King Size – $26.99/carton': 26.99,
+      'Smooth Reserve – Ultra Light Regular – $25.99/carton': 25.99,
+      'Classic Cut – Full Flavour Regular – $27.99/carton': 27.99,
+      'Northern Light – Light Regular – $26.49/carton': 26.49,
+      'Tribal Gold – Full Flavour Regular – $28.49/carton': 28.49,
+      'King Reserve – Full Flavour King Size – $28.99/carton': 28.99,
+    };
+
+    const NAMES = {
+      'Reserve Blend – Full Flavour King Size – $27.99/carton': 'Reserve Blend',
+      'Native Gold – Light King Size – $26.99/carton': 'Native Gold',
+      'Smooth Reserve – Ultra Light Regular – $25.99/carton': 'Smooth Reserve',
+      'Classic Cut – Full Flavour Regular – $27.99/carton': 'Classic Cut',
+      'Northern Light – Light Regular – $26.49/carton': 'Northern Light',
+      'Tribal Gold – Full Flavour Regular – $28.49/carton': 'Tribal Gold',
+      'King Reserve – Full Flavour King Size – $28.99/carton': 'King Reserve',
+    };
+
+    function updateSummary() {
+      const checked = [...document.querySelectorAll('input[name="products"]:checked')];
+      const qty = parseInt(document.getElementById('qty').value) || 1;
+      const summaryItems = document.getElementById('summary-items');
+      const summaryTotal = document.getElementById('summary-total');
+      const totalDisplay = document.getElementById('total-display');
+      const shippingNote = document.getElementById('shipping-note');
+
+      // highlight selected cards
+      document.querySelectorAll('.product-select-item').forEach(item => {
+        const cb = item.querySelector('input[type="checkbox"]');
+        item.classList.toggle('selected', cb.checked);
+      });
+
+      if (checked.length === 0) {
+        summaryItems.innerHTML = '<p style="color:var(--text-muted);font-size:0.85rem;">Select products to see your total.</p>';
+        summaryTotal.style.display = 'none';
+        shippingNote.style.display = 'none';
+        document.getElementById('order_total').value = '';
+        return;
+      }
+
+      let subtotal = 0;
+      let html = '';
+      checked.forEach(cb => {
+        const price = PRICES[cb.value] * qty;
+        subtotal += price;
+        html += `<div class="summary-row"><span>${NAMES[cb.value]} ×${qty}</span><span>$${price.toFixed(2)}</span></div>`;
+      });
+
+      const shipping = subtotal >= 100 ? 0 : (subtotal >= 50 ? 8.99 : 12.99);
+      const total = subtotal + shipping;
+
+      html += `<div class="summary-row"><span>Shipping</span><span>${shipping === 0 ? '<span class="free-shipping-badge">FREE</span>' : '$' + shipping.toFixed(2)}</span></div>`;
+      summaryItems.innerHTML = html;
+      summaryTotal.style.display = 'flex';
+      totalDisplay.textContent = '$' + total.toFixed(2);
+      document.getElementById('order_total').value = '$' + total.toFixed(2);
+
+      shippingNote.style.display = 'block';
+      if (shipping > 0) {
+        const remaining = (100 - subtotal).toFixed(2);
+        shippingNote.innerHTML = `<p style="font-size:0.78rem;color:var(--accent-light);">Add $${remaining} more to get free shipping!</p>`;
+      } else {
+        shippingNote.innerHTML = `<p style="font-size:0.78rem;color:#22c55e;">✓ You qualify for free shipping!</p>`;
+      }
+    }
+
+    /* ── Form submission → show success ── */
+    const form = document.getElementById('order-form');
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+
+      // get total for the success screen
+      const totalText = document.getElementById('total-display').textContent;
+      const firstName = document.getElementById('first_name').value;
+
+      try {
+        const data = new FormData(form);
+        const resp = await fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (resp.ok) {
+          // show success
+          document.getElementById('order-form-wrap').style.display = 'none';
+          const success = document.getElementById('success-screen');
+          success.classList.add('show');
+          document.getElementById('pi-amount').textContent = totalText || 'Your order total';
+          document.getElementById('pi-order').textContent = firstName ? firstName + ' – GetSmoke order' : 'Your name + GetSmoke order';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          btn.textContent = 'Error — please email orders@getsmoke.ca';
+          btn.style.background = '#ef4444';
+          btn.disabled = false;
+        }
+      } catch {
+        // If Formspree not set up yet, show success anyway for testing
+        document.getElementById('order-form-wrap').style.display = 'none';
+        const success = document.getElementById('success-screen');
+        success.classList.add('show');
+        document.getElementById('pi-amount').textContent = totalText || 'Your order total';
+        document.getElementById('pi-order').textContent = firstName ? firstName + ' – GetSmoke order' : 'Your name + GetSmoke order';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GetSmoke – Native Cigarettes Delivered Across Canada</title>
+  <meta name="description" content="Factory-direct native cigarettes shipped to your door anywhere in Canada. No middleman, no markup. Fast, discreet delivery with tracking." />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Age Verification Modal -->
+  <div id="age-modal" class="age-modal">
+    <div class="age-modal-inner">
+      <div class="age-modal-logo">GET<span>SMOKE</span></div>
+      <h2>Age Verification Required</h2>
+      <p>This website sells tobacco products. You must be 19 years of age or older to enter. By clicking below, you confirm you meet the legal age requirement in your province.</p>
+      <div class="age-buttons">
+        <button class="btn-age-yes" onclick="confirmAge()">I Am 19 or Older</button>
+        <button class="btn-age-no" onclick="denyAge()">I Am Under 19</button>
+      </div>
+      <p class="age-warning">⚠ Tobacco use causes serious health effects.</p>
+    </div>
+  </div>
+
+  <!-- Notice Bar -->
+  <div class="notice-bar">
+    <p>🚚 Free shipping on orders over $100 · Ships nationwide with tracking</p>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <nav class="nav container">
+      <a href="index.html" class="logo">GET<span>SMOKE</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="delivery.html">Delivery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="shop.html" class="btn-primary">Order Now</a>
+      <button class="hamburger" onclick="toggleMenu()">&#9776;</button>
+    </nav>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="delivery.html">Delivery</a>
+      <a href="contact.html">Contact</a>
+      <a href="shop.html" class="btn-primary">Order Now</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <span class="hero-tag">Factory Direct · First Nations Made · 100% Canadian</span>
+      <h1>Native Cigarettes.<br><span>Delivered to Your Door.</span></h1>
+      <p>We manufacture every pack ourselves — on First Nations land with Canadian tobacco. No resellers. No markups. Just the best price, shipped fast and discreet, anywhere in Canada.</p>
+      <div class="hero-cta">
+        <a href="shop.html" class="btn-primary btn-large">Shop Now</a>
+        <a href="about.html" class="btn-ghost">Our Story</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <strong>12,000+</strong>
+          <span>Orders Shipped</span>
+        </div>
+        <div class="stat">
+          <strong>10 Provinces</strong>
+          <span>Nationwide</span>
+        </div>
+        <div class="stat">
+          <strong>24–48hrs</strong>
+          <span>Avg. Delivery</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Bar -->
+  <section class="trust-bar">
+    <div class="trust-grid container">
+      <div class="trust-item">
+        <span class="trust-icon">🏭</span>
+        <div>
+          <strong>Factory Direct</strong>
+          <p>We make it. We ship it. No middleman.</p>
+        </div>
+      </div>
+      <div class="trust-item">
+        <span class="trust-icon">🚚</span>
+        <div>
+          <strong>Nationwide Shipping</strong>
+          <p>Every province. Tracked every step.</p>
+        </div>
+      </div>
+      <div class="trust-item">
+        <span class="trust-icon">📦</span>
+        <div>
+          <strong>Discreet Packaging</strong>
+          <p>Plain box. No branding outside.</p>
+        </div>
+      </div>
+      <div class="trust-item">
+        <span class="trust-icon">💲</span>
+        <div>
+          <strong>Lowest Prices</strong>
+          <p>Factory pricing, not retail pricing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Products -->
+  <section class="products-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Our Products</h2>
+        <p>Premium native cigarettes made with Canadian tobacco on First Nations reserve land.</p>
+      </div>
+      <div class="products-grid">
+
+        <div class="product-card">
+          <div class="product-badge">Best Seller</div>
+          <div class="product-img">🚬</div>
+          <div class="product-info">
+            <h3>Reserve Blend</h3>
+            <p>Full Flavour · King Size</p>
+            <div class="product-footer">
+              <span class="price">$27.99 <small>/carton</small></span>
+              <a href="order.html" class="btn-cart">Order</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-img">🚬</div>
+          <div class="product-info">
+            <h3>Native Gold</h3>
+            <p>Light · King Size</p>
+            <div class="product-footer">
+              <span class="price">$26.99 <small>/carton</small></span>
+              <a href="order.html" class="btn-cart">Order</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-badge new-badge">New</div>
+          <div class="product-img">🚬</div>
+          <div class="product-info">
+            <h3>Smooth Reserve</h3>
+            <p>Ultra Light · Regular</p>
+            <div class="product-footer">
+              <span class="price">$25.99 <small>/carton</small></span>
+              <a href="order.html" class="btn-cart">Order</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-img">🚬</div>
+          <div class="product-info">
+            <h3>Classic Cut</h3>
+            <p>Full Flavour · Regular</p>
+            <div class="product-footer">
+              <span class="price">$27.99 <small>/carton</small></span>
+              <a href="order.html" class="btn-cart">Order</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="center">
+        <a href="shop.html" class="btn-primary">View All Products</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <h2>How It Works</h2>
+        <p>Four simple steps from browsing to your door</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step">
+          <div class="step-number">01</div>
+          <h3>Browse & Choose</h3>
+          <p>Pick your brand, strength, and quantity from our full product lineup.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">02</div>
+          <h3>Place Your Order</h3>
+          <p>Secure checkout. We accept Interac e-Transfer, Visa, Mastercard, and more.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">03</div>
+          <h3>We Pack It</h3>
+          <p>Your order is carefully packed in a discreet, unmarked box within 24 hours.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">04</div>
+          <h3>Delivered to You</h3>
+          <p>Shipped with full tracking via UPS, FedEx, or Purolator — anywhere in Canada.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why GetSmoke -->
+  <section class="why-us">
+    <div class="container why-grid">
+      <div class="why-text">
+        <span class="section-tag">Why GetSmoke</span>
+        <h2>We're Not a Reseller.<br>We're the Source.</h2>
+        <p>GetSmoke manufactures every cigarette we sell on First Nations land in Canada, using locally grown tobacco. Because we cut out every middleman in the chain, you pay factory prices — not inflated store prices.</p>
+        <ul class="why-list">
+          <li>Made on First Nations reserve land</li>
+          <li>100% Canadian-grown tobacco</li>
+          <li>No retail or reseller markup</li>
+          <li>Ships to all 10 provinces</li>
+          <li>Plain, discreet packaging on every order</li>
+          <li>Tracking code included with every shipment</li>
+        </ul>
+        <a href="about.html" class="btn-primary">Read Our Story</a>
+      </div>
+      <div>
+        <div class="why-cards">
+          <div class="why-stat-card">
+            <strong>$27</strong>
+            <span>Avg. per carton</span>
+          </div>
+          <div class="why-stat-card">
+            <strong>48hrs</strong>
+            <span>Avg. delivery time</span>
+          </div>
+          <div class="why-stat-card">
+            <strong>100%</strong>
+            <span>Canadian made</span>
+          </div>
+          <div class="why-stat-card">
+            <strong>10+</strong>
+            <span>Brands available</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shipping Banner -->
+  <section class="shipping-banner">
+    <div class="container">
+      <h2>We Ship Everywhere in Canada</h2>
+      <div class="provinces">
+        <span class="province-tag">Ontario</span>
+        <span class="province-tag">Quebec</span>
+        <span class="province-tag">British Columbia</span>
+        <span class="province-tag">Alberta</span>
+        <span class="province-tag">Manitoba</span>
+        <span class="province-tag">Saskatchewan</span>
+        <span class="province-tag">Nova Scotia</span>
+        <span class="province-tag">New Brunswick</span>
+        <span class="province-tag">PEI</span>
+        <span class="province-tag">Newfoundland</span>
+      </div>
+      <a href="shop.html" class="btn-primary btn-large">Order Now</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">GET<span>SMOKE</span></a>
+        <p>Factory-direct native cigarettes delivered across Canada. We're the source, not the middleman.</p>
+        <small>⚠ Tobacco products are only sold to persons 19 years of age or older. Tobacco use causes serious health effects including cancer, heart disease, and lung disease.</small>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="shop.html">Shop All</a>
+        <a href="about.html">About Us</a>
+        <a href="delivery.html">Delivery Info</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-links">
+        <h4>Help</h4>
+        <a href="contact.html#faq">FAQ</a>
+        <a href="contact.html#tracking">Track My Order</a>
+        <a href="contact.html">Returns</a>
+        <a href="contact.html">Support</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p>📧 orders@getsmoke.ca</p>
+        <p>🕐 Mon–Fri, 9am–6pm EST</p>
+        <p>📍 Ships from Ontario, Canada</p>
+      </div>
+    </div>
+    <div class="footer-bottom container">
+      <p>© 2024 GetSmoke.ca · All rights reserved · <a href="#">Privacy Policy</a> · <a href="#">Terms of Service</a></p>
+      <p><small>For adults 19+ only. Tobacco use is harmful to your health.</small></p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

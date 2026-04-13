@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Delivery Info – GetSmoke | Nationwide Cigarette Shipping Canada</title>
+  <meta name="description" content="GetSmoke ships native cigarettes across all Canadian provinces. Fast, discreet, tracked delivery via UPS, FedEx, and Purolator." />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Age Verification Modal -->
+  <div id="age-modal" class="age-modal">
+    <div class="age-modal-inner">
+      <div class="age-modal-logo">GET<span>SMOKE</span></div>
+      <h2>Age Verification Required</h2>
+      <p>This website sells tobacco products. You must be 19 years of age or older to enter.</p>
+      <div class="age-buttons">
+        <button class="btn-age-yes" onclick="confirmAge()">I Am 19 or Older</button>
+        <button class="btn-age-no" onclick="denyAge()">I Am Under 19</button>
+      </div>
+      <p class="age-warning">⚠ Tobacco use causes serious health effects.</p>
+    </div>
+  </div>
+
+  <!-- Notice Bar -->
+  <div class="notice-bar">
+    <p>🚚 Free shipping on orders over $100 · Ships nationwide with tracking</p>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <nav class="nav container">
+      <a href="index.html" class="logo">GET<span>SMOKE</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="delivery.html" class="active">Delivery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="shop.html" class="btn-primary">Order Now</a>
+      <button class="hamburger" onclick="toggleMenu()">&#9776;</button>
+    </nav>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="delivery.html">Delivery</a>
+      <a href="contact.html">Contact</a>
+      <a href="shop.html" class="btn-primary">Order Now</a>
+    </div>
+  </header>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-tag">Shipping & Delivery</span>
+      <h1>Fast. Tracked. Discreet.</h1>
+      <p>We ship to every province in Canada. Every order comes with a tracking number and plain, unmarked packaging.</p>
+    </div>
+  </section>
+
+  <!-- Delivery Section -->
+  <section class="delivery-section">
+    <div class="container">
+
+      <!-- Delivery Cards -->
+      <div class="delivery-grid">
+        <div class="delivery-card">
+          <div class="icon">📦</div>
+          <h3>Discreet Packaging</h3>
+          <p>All orders ship in plain, unmarked cardboard boxes. No GetSmoke branding, no product names on the outside. Your neighbours won't know a thing.</p>
+        </div>
+        <div class="delivery-card">
+          <div class="icon">📍</div>
+          <h3>Full Order Tracking</h3>
+          <p>Every order includes a tracking number emailed to you. Track your package live through UPS, FedEx, or Purolator's website.</p>
+        </div>
+        <div class="delivery-card">
+          <div class="icon">⚡</div>
+          <h3>Fast Processing</h3>
+          <p>Orders placed before 2pm EST are packed and shipped the same business day. You'll have your tracking number within hours.</p>
+        </div>
+        <div class="delivery-card">
+          <div class="icon">🇨🇦</div>
+          <h3>Ships Everywhere</h3>
+          <p>We deliver to all 10 provinces and 3 territories. Rural addresses, apartments, PO boxes — if Canada Post or couriers deliver there, so do we.</p>
+        </div>
+        <div class="delivery-card">
+          <div class="icon">🚚</div>
+          <h3>Trusted Carriers</h3>
+          <p>We use UPS, FedEx, Purolator, and Canada Post. Carrier is selected based on your location for the fastest possible delivery.</p>
+        </div>
+        <div class="delivery-card">
+          <div class="icon">🎁</div>
+          <h3>Free Shipping</h3>
+          <p>Free shipping on all orders over $100. For smaller orders, flat-rate shipping applies based on your province.</p>
+        </div>
+      </div>
+
+      <!-- Delivery Times Table -->
+      <div class="section-header">
+        <h2>Estimated Delivery Times</h2>
+        <p>Business days after your order is shipped</p>
+      </div>
+      <div class="delivery-table-wrap">
+        <table class="delivery-table">
+          <thead>
+            <tr>
+              <th>Province / Territory</th>
+              <th>Estimated Delivery</th>
+              <th>Carriers Used</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Ontario</td>
+              <td>1–2 business days</td>
+              <td>UPS, Purolator</td>
+              <td><span class="badge-green">Available</span></td>
+            </tr>
+            <tr>
+              <td>Quebec</td>
+              <td>1–3 business days</td>
+              <td>FedEx, Purolator</td>
+              <td><span class="badge-green">Available</span></td>
+            </tr>
+            <tr>
+              <td>British Columbia</td>
+              <td>3–5 business days</td>
+              <td>UPS, FedEx</td>
+              <td><span class="badge-green">Available</span></td>
+            </tr>
+            <tr>
+              <td>Alberta</td>
+              <td>2–4 business days</td>
+              <td>UPS, Purolator</td>
+              <td><span class="badge-green">Available</span></td>
+            </tr>
+            <tr>
+              <td>Manitoba</td>
+              <td>2–4 business days</td>
+              <td>Canada Post, UPS</td>
+              <td><span class="badge-green">Available</span></td>
+            </tr>
+            <tr>
+              <td>Saskatchewan</td>
+              <td>2–4 business days</td>
+              <td>Canada Post, UPS</td>
+              <td><span class="badge-green">Available</span></td>
+            </tr>
+            <tr>
+              <td>Nova Scotia</td>
+              <td>3–5 business days</td>
+              <td>Canada Post, FedEx</td>
+              <td><span class="badge-green">Available</span></td>
+            </tr>
+            <tr>
+              <td>New Brunswick</td>
+              <td>3–5 business days</td>
+              <td>Canada Post, FedEx</td>
+              <td><span class="badge-green">Available</span></td>
+            </tr>
+            <tr>
+              <td>Prince Edward Island</td>
+              <td>4–6 business days</td>
+              <td>Canada Post</td>
+              <td><span class="badge-green">Available</span></td>
+            </tr>
+            <tr>
+              <td>Newfoundland & Labrador</td>
+              <td>4–7 business days</td>
+              <td>Canada Post</td>
+              <td><span class="badge-green">Available</span></td>
+            </tr>
+            <tr>
+              <td>Yukon / NWT / Nunavut</td>
+              <td>6–10 business days</td>
+              <td>Canada Post</td>
+              <td><span class="badge-green">Available</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Shipping Rates -->
+      <div class="section-header">
+        <h2>Shipping Rates</h2>
+        <p>Simple, flat-rate shipping based on order size</p>
+      </div>
+      <div class="delivery-table-wrap">
+        <table class="delivery-table">
+          <thead>
+            <tr>
+              <th>Order Total</th>
+              <th>Shipping Cost</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Under $50</td>
+              <td>$12.99</td>
+              <td>Standard tracked shipping</td>
+            </tr>
+            <tr>
+              <td>$50 – $99.99</td>
+              <td>$8.99</td>
+              <td>Standard tracked shipping</td>
+            </tr>
+            <tr>
+              <td>$100 and over</td>
+              <td><strong style="color: #22c55e;">FREE</strong></td>
+              <td>Free tracked shipping, all provinces</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="shipping-banner">
+    <div class="container">
+      <h2>Ready to Order?</h2>
+      <p>Shop our full lineup and get your order delivered fast, anywhere in Canada.</p>
+      <a href="shop.html" class="btn-primary btn-large">Shop Now</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">GET<span>SMOKE</span></a>
+        <p>Factory-direct native cigarettes delivered across Canada. We're the source, not the middleman.</p>
+        <small>⚠ Tobacco products are only sold to persons 19 years of age or older. Tobacco use causes serious health effects.</small>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="shop.html">Shop All</a>
+        <a href="about.html">About Us</a>
+        <a href="delivery.html">Delivery Info</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-links">
+        <h4>Help</h4>
+        <a href="contact.html#faq">FAQ</a>
+        <a href="contact.html#tracking">Track My Order</a>
+        <a href="contact.html">Returns</a>
+        <a href="contact.html">Support</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p>📧 orders@getsmoke.ca</p>
+        <p>🕐 Mon–Fri, 9am–6pm EST</p>
+        <p>📍 Ships from Ontario, Canada</p>
+      </div>
+    </div>
+    <div class="footer-bottom container">
+      <p>© 2024 GetSmoke.ca · All rights reserved · <a href="#">Privacy Policy</a> · <a href="#">Terms of Service</a></p>
+      <p><small>For adults 19+ only. Tobacco use is harmful to your health.</small></p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

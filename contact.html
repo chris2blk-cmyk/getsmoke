@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact & FAQ – GetSmoke | Native Cigarettes Canada</title>
+  <meta name="description" content="Get in touch with GetSmoke for orders, tracking, or questions. Browse our FAQ for quick answers." />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Age Verification Modal -->
+  <div id="age-modal" class="age-modal">
+    <div class="age-modal-inner">
+      <div class="age-modal-logo">GET<span>SMOKE</span></div>
+      <h2>Age Verification Required</h2>
+      <p>This website sells tobacco products. You must be 19 years of age or older to enter.</p>
+      <div class="age-buttons">
+        <button class="btn-age-yes" onclick="confirmAge()">I Am 19 or Older</button>
+        <button class="btn-age-no" onclick="denyAge()">I Am Under 19</button>
+      </div>
+      <p class="age-warning">⚠ Tobacco use causes serious health effects.</p>
+    </div>
+  </div>
+
+  <!-- Notice Bar -->
+  <div class="notice-bar">
+    <p>🚚 Free shipping on orders over $100 · Ships nationwide with tracking</p>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <nav class="nav container">
+      <a href="index.html" class="logo">GET<span>SMOKE</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="delivery.html">Delivery</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+      <a href="shop.html" class="btn-primary">Order Now</a>
+      <button class="hamburger" onclick="toggleMenu()">&#9776;</button>
+    </nav>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="delivery.html">Delivery</a>
+      <a href="contact.html">Contact</a>
+      <a href="shop.html" class="btn-primary">Order Now</a>
+    </div>
+  </header>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-tag">Get In Touch</span>
+      <h1>Contact & FAQ</h1>
+      <p>Have a question about an order, delivery, or our products? We're here to help.</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <div class="container">
+
+      <div class="contact-grid">
+
+        <!-- Contact Info -->
+        <div class="contact-info">
+          <h2>Reach Us Directly</h2>
+          <p>We respond to all emails within 1–2 business hours during operating hours. For urgent order questions, email is the fastest way to reach us.</p>
+          <div class="contact-details">
+            <div class="contact-item">
+              <span class="icon">📧</span>
+              <div>
+                <strong>Email</strong>
+                <span>orders@getsmoke.ca</span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <span class="icon">🕐</span>
+              <div>
+                <strong>Hours</strong>
+                <span>Monday–Friday, 9am–6pm EST</span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <span class="icon">📍</span>
+              <div>
+                <strong>Location</strong>
+                <span>Ontario, Canada</span>
+              </div>
+            </div>
+            <div class="contact-item" id="tracking">
+              <span class="icon">📦</span>
+              <div>
+                <strong>Track Your Order</strong>
+                <span>Email us your order number and we'll send your tracking link right away.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form">
+          <h3>Send Us a Message</h3>
+          <form id="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" name="fname" placeholder="John" required />
+              </div>
+              <div class="form-group">
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" name="lname" placeholder="Smith" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="john@example.com" required />
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <select id="subject" name="subject">
+                <option value="">Select a topic...</option>
+                <option value="order">Place an Order</option>
+                <option value="tracking">Track My Order</option>
+                <option value="return">Return or Refund</option>
+                <option value="product">Product Question</option>
+                <option value="bulk">Bulk / Wholesale Order</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Your message here..." required></textarea>
+            </div>
+            <button type="submit" class="btn-primary" style="width:100%; padding: 14px;">Send Message</button>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- FAQ -->
+      <section class="faq-section" id="faq">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-list">
+
+          <div class="faq-item">
+            <button class="faq-question">
+              How do I place an order?
+              <span class="faq-arrow">▼</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Browse our shop page, select the products you want, and click "Order". Fill in your delivery details and choose your payment method. We accept Interac e-Transfer, Visa, Mastercard, and PayPal. You'll receive a confirmation email with your order details right away.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              What payment methods do you accept?
+              <span class="faq-arrow">▼</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                We accept Interac e-Transfer (preferred), Visa, Mastercard, and PayPal. Interac e-Transfer orders are processed fastest. For e-Transfer, send payment to orders@getsmoke.ca with your order number in the message.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              How long does delivery take?
+              <span class="faq-arrow">▼</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Delivery times vary by province. Ontario orders typically arrive in 1–2 business days. Western Canada is 3–5 business days, and Atlantic Canada is 3–6 business days. All orders include tracking so you can follow your package. See our full delivery times table on the <a href="delivery.html" style="color: var(--accent-light);">Delivery page</a>.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Will my packaging be discreet?
+              <span class="faq-arrow">▼</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Yes, always. Every order ships in a plain, unmarked brown cardboard box. There is no GetSmoke branding, no product names, and no indication of the contents on the outside of the package. Your privacy is our priority.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Do you ship to all provinces?
+              <span class="faq-arrow">▼</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Yes. We ship to all 10 provinces and 3 territories across Canada. Whether you're in downtown Toronto, rural Saskatchewan, or a small town in Newfoundland — we deliver. Remote addresses may take a day or two longer.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Are your cigarettes legal?
+              <span class="faq-arrow">▼</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Our cigarettes are manufactured on First Nations land in Canada under Indigenous manufacturing rights. Sales are made to adults 19 years of age and older. All products are produced with Canadian-grown tobacco. We comply with applicable regulations regarding tobacco sales.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Can I return or exchange my order?
+              <span class="faq-arrow">▼</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Due to the nature of tobacco products, we cannot accept returns on opened cartons. If your order arrives damaged or you received the wrong product, contact us within 48 hours of delivery and we'll make it right. Email orders@getsmoke.ca with your order number and a photo.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Do you offer bulk or wholesale pricing?
+              <span class="faq-arrow">▼</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Yes! For orders of 5+ cartons or regular wholesale purchases, we offer volume discounts. Email us at orders@getsmoke.ca with "Bulk Order" in the subject line and we'll send you our bulk pricing sheet.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              How do I track my order?
+              <span class="faq-arrow">▼</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Once your order ships, you'll receive an email with your tracking number and a link to track it live. If you haven't received your tracking number within 24 hours of placing your order (during business hours), email us at orders@getsmoke.ca and we'll sort it out immediately.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">GET<span>SMOKE</span></a>
+        <p>Factory-direct native cigarettes delivered across Canada. We're the source, not the middleman.</p>
+        <small>⚠ Tobacco products are only sold to persons 19 years of age or older. Tobacco use causes serious health effects.</small>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="shop.html">Shop All</a>
+        <a href="about.html">About Us</a>
+        <a href="delivery.html">Delivery Info</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-links">
+        <h4>Help</h4>
+        <a href="contact.html#faq">FAQ</a>
+        <a href="contact.html#tracking">Track My Order</a>
+        <a href="contact.html">Returns</a>
+        <a href="contact.html">Support</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p>📧 orders@getsmoke.ca</p>
+        <p>🕐 Mon–Fri, 9am–6pm EST</p>
+        <p>📍 Ships from Ontario, Canada</p>
+      </div>
+    </div>
+    <div class="footer-bottom container">
+      <p>© 2024 GetSmoke.ca · All rights reserved · <a href="#">Privacy Policy</a> · <a href="#">Terms of Service</a></p>
+      <p><small>For adults 19+ only. Tobacco use is harmful to your health.</small></p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
