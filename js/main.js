@@ -93,16 +93,37 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-/* ── Simple contact form handler ── */
+/* ── Contact form handler (Formspree) ── */
 document.addEventListener('DOMContentLoaded', function () {
   const form = document.getElementById('contact-form');
   if (!form) return;
 
-  form.addEventListener('submit', function (e) {
+  form.addEventListener('submit', async function (e) {
     e.preventDefault();
     const btn = form.querySelector('button[type="submit"]');
-    btn.textContent = 'Sent! We\'ll be in touch.';
+    btn.textContent = 'Sending...';
     btn.disabled = true;
-    btn.style.background = '#22c55e';
+
+    try {
+      const resp = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (resp.ok) {
+        btn.textContent = 'Sent! We\'ll be in touch.';
+        btn.style.background = '#22c55e';
+        form.reset();
+      } else {
+        btn.textContent = 'Error — please email orders@getsmoke.ca';
+        btn.style.background = '#ef4444';
+        btn.disabled = false;
+      }
+    } catch {
+      btn.textContent = 'Error — please email orders@getsmoke.ca';
+      btn.style.background = '#ef4444';
+      btn.disabled = false;
+    }
   });
 });
