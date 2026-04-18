@@ -80,6 +80,25 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+/* ── Scroll fade-in animations ── */
+document.addEventListener('DOMContentLoaded', function () {
+  const targets = document.querySelectorAll(
+    '.product-card, .step, .value-card, .delivery-card, .trust-item, .why-stat-card, .stat, .about-stat'
+  );
+  targets.forEach(el => el.classList.add('fade-up'));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  targets.forEach(el => observer.observe(el));
+});
+
 /* ── Smooth scroll for anchor links ── */
 document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
