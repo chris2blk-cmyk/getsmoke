@@ -369,66 +369,66 @@
               <div class="product-select-list" id="product-list">
 
                 <label class="product-select-item">
-                  <input type="checkbox" name="products" value="Reserve Blend – Full Flavour King Size – $27.99/carton" onchange="updateSummary()" />
+                  <input type="checkbox" name="products" value="Reserve Blend" onchange="updateSummary()" />
                   <div class="product-select-info">
                     <strong>Reserve Blend</strong>
                     <span>Full Flavour · King Size</span>
                   </div>
-                  <span class="product-select-price">$27.99</span>
+                  <span class="product-select-price">$35.00</span>
                 </label>
 
                 <label class="product-select-item">
-                  <input type="checkbox" name="products" value="Native Gold – Light King Size – $26.99/carton" onchange="updateSummary()" />
+                  <input type="checkbox" name="products" value="Native Gold" onchange="updateSummary()" />
                   <div class="product-select-info">
                     <strong>Native Gold</strong>
                     <span>Light · King Size</span>
                   </div>
-                  <span class="product-select-price">$26.99</span>
+                  <span class="product-select-price">$35.00</span>
                 </label>
 
                 <label class="product-select-item">
-                  <input type="checkbox" name="products" value="Smooth Reserve – Ultra Light Regular – $25.99/carton" onchange="updateSummary()" />
+                  <input type="checkbox" name="products" value="Smooth Reserve" onchange="updateSummary()" />
                   <div class="product-select-info">
                     <strong>Smooth Reserve</strong>
                     <span>Ultra Light · Regular</span>
                   </div>
-                  <span class="product-select-price">$25.99</span>
+                  <span class="product-select-price">$35.00</span>
                 </label>
 
                 <label class="product-select-item">
-                  <input type="checkbox" name="products" value="Classic Cut – Full Flavour Regular – $27.99/carton" onchange="updateSummary()" />
+                  <input type="checkbox" name="products" value="Classic Cut" onchange="updateSummary()" />
                   <div class="product-select-info">
                     <strong>Classic Cut</strong>
                     <span>Full Flavour · Regular</span>
                   </div>
-                  <span class="product-select-price">$27.99</span>
+                  <span class="product-select-price">$35.00</span>
                 </label>
 
                 <label class="product-select-item">
-                  <input type="checkbox" name="products" value="Northern Light – Light Regular – $26.49/carton" onchange="updateSummary()" />
+                  <input type="checkbox" name="products" value="Northern Light" onchange="updateSummary()" />
                   <div class="product-select-info">
                     <strong>Northern Light</strong>
                     <span>Light · Regular</span>
                   </div>
-                  <span class="product-select-price">$26.49</span>
+                  <span class="product-select-price">$35.00</span>
                 </label>
 
                 <label class="product-select-item">
-                  <input type="checkbox" name="products" value="Tribal Gold – Full Flavour Regular – $28.49/carton" onchange="updateSummary()" />
+                  <input type="checkbox" name="products" value="Tribal Gold" onchange="updateSummary()" />
                   <div class="product-select-info">
                     <strong>Tribal Gold</strong>
                     <span>Full Flavour · Regular</span>
                   </div>
-                  <span class="product-select-price">$28.49</span>
+                  <span class="product-select-price">$35.00</span>
                 </label>
 
                 <label class="product-select-item">
-                  <input type="checkbox" name="products" value="King Reserve – Full Flavour King Size – $28.99/carton" onchange="updateSummary()" />
+                  <input type="checkbox" name="products" value="King Reserve" onchange="updateSummary()" />
                   <div class="product-select-info">
                     <strong>King Reserve</strong>
                     <span>Full Flavour · King Size</span>
                   </div>
-                  <span class="product-select-price">$28.99</span>
+                  <span class="product-select-price">$35.00</span>
                 </label>
 
               </div>
@@ -585,25 +585,21 @@
 
   <script src="js/main.js"></script>
   <script>
-    /* ── Product prices map ── */
-    const PRICES = {
-      'Reserve Blend – Full Flavour King Size – $27.99/carton': 27.99,
-      'Native Gold – Light King Size – $26.99/carton': 26.99,
-      'Smooth Reserve – Ultra Light Regular – $25.99/carton': 25.99,
-      'Classic Cut – Full Flavour Regular – $27.99/carton': 27.99,
-      'Northern Light – Light Regular – $26.49/carton': 26.49,
-      'Tribal Gold – Full Flavour Regular – $28.49/carton': 28.49,
-      'King Reserve – Full Flavour King Size – $28.99/carton': 28.99,
-    };
+    /* ── Volume pricing tiers ── */
+    function getPricePerCarton(totalCartons) {
+      if (totalCartons >= 25) return 26;
+      if (totalCartons >= 11) return 33;
+      return 35;
+    }
 
-    const NAMES = {
-      'Reserve Blend – Full Flavour King Size – $27.99/carton': 'Reserve Blend',
-      'Native Gold – Light King Size – $26.99/carton': 'Native Gold',
-      'Smooth Reserve – Ultra Light Regular – $25.99/carton': 'Smooth Reserve',
-      'Classic Cut – Full Flavour Regular – $27.99/carton': 'Classic Cut',
-      'Northern Light – Light Regular – $26.49/carton': 'Northern Light',
-      'Tribal Gold – Full Flavour Regular – $28.49/carton': 'Tribal Gold',
-      'King Reserve – Full Flavour King Size – $28.99/carton': 'King Reserve',
+    const PRODUCT_NAMES = {
+      'Reserve Blend': 'Reserve Blend',
+      'Native Gold': 'Native Gold',
+      'Smooth Reserve': 'Smooth Reserve',
+      'Classic Cut': 'Classic Cut',
+      'Northern Light': 'Northern Light',
+      'Tribal Gold': 'Tribal Gold',
+      'King Reserve': 'King Reserve',
     };
 
     function updateSummary() {
@@ -628,12 +624,21 @@
         return;
       }
 
+      const totalCartons = checked.length * qty;
+      const pricePerCarton = getPricePerCarton(totalCartons);
+
       let subtotal = 0;
       let html = '';
+
+      // Show active tier
+      let tierLabel = totalCartons >= 25 ? '$26/carton (25+ tier)' : totalCartons >= 11 ? '$33/carton (11–25 tier)' : '$35/carton (1–10 tier)';
+      html += `<div class="summary-row" style="margin-bottom:8px;"><span style="color:var(--accent-light);font-size:0.78rem;font-weight:700;">Active price: ${tierLabel}</span></div>`;
+
       checked.forEach(cb => {
-        const price = PRICES[cb.value] * qty;
-        subtotal += price;
-        html += `<div class="summary-row"><span>${NAMES[cb.value]} ×${qty}</span><span>$${price.toFixed(2)}</span></div>`;
+        const name = cb.value;
+        const lineTotal = pricePerCarton * qty;
+        subtotal += lineTotal;
+        html += `<div class="summary-row"><span>${name} ×${qty}</span><span>$${lineTotal.toFixed(2)}</span></div>`;
       });
 
       const shipping = subtotal >= 100 ? 0 : (subtotal >= 50 ? 8.99 : 12.99);
@@ -646,11 +651,14 @@
       document.getElementById('order_total').value = '$' + total.toFixed(2);
 
       shippingNote.style.display = 'block';
-      if (shipping > 0) {
-        const remaining = (100 - subtotal).toFixed(2);
-        shippingNote.innerHTML = `<p style="font-size:0.78rem;color:var(--accent-light);">Add $${remaining} more to get free shipping!</p>`;
+      if (totalCartons < 11) {
+        const needed = 11 - totalCartons;
+        shippingNote.innerHTML = `<p style="font-size:0.78rem;color:var(--accent-light);">Add ${needed} more carton${needed > 1 ? 's' : ''} to drop to <strong>$33/carton</strong>!</p>`;
+      } else if (totalCartons < 25) {
+        const needed = 25 - totalCartons;
+        shippingNote.innerHTML = `<p style="font-size:0.78rem;color:var(--accent-light);">Add ${needed} more carton${needed > 1 ? 's' : ''} to drop to <strong>$26/carton</strong>!</p>`;
       } else {
-        shippingNote.innerHTML = `<p style="font-size:0.78rem;color:#22c55e;">✓ You qualify for free shipping!</p>`;
+        shippingNote.innerHTML = `<p style="font-size:0.78rem;color:#22c55e;">✓ You're getting our best price at $26/carton!</p>`;
       }
     }
 
