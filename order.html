@@ -633,7 +633,7 @@
       let html = '';
 
       // Show active tier
-      let tierLabel = totalCartons >= 25 ? '$26/carton (25+ tier)' : totalCartons >= 11 ? '$33/carton (11–25 tier)' : '$35/carton (1–10 tier)';
+      let tierLabel = totalCartons >= 25 ? '$26/carton — Save 26% 🏆' : totalCartons >= 11 ? '$33/carton — Save 6%' : '$35/carton (standard)';
       html += `<div class="summary-row" style="margin-bottom:8px;"><span style="color:var(--accent-light);font-size:0.78rem;font-weight:700;">Active price: ${tierLabel}</span></div>`;
 
       checked.forEach(cb => {

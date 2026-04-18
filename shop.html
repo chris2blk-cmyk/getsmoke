@@ -67,24 +67,35 @@
     <div class="container">
 
       <!-- Bulk Pricing Banner -->
-      <div style="background:rgba(232,116,0,0.08);border:1.5px solid rgba(232,116,0,0.3);border-radius:12px;padding:24px 28px;margin-bottom:32px;">
-        <h3 style="font-size:1rem;font-weight:800;color:var(--accent-light);margin-bottom:14px;">Volume Pricing — The More You Order, The Less You Pay</h3>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
-          <div style="background:var(--bg-elevated);border-radius:8px;padding:16px;text-align:center;">
-            <strong style="display:block;font-size:1.3rem;color:var(--text);">$35</strong>
-            <span style="font-size:0.8rem;color:var(--text-muted);">per carton</span>
-            <p style="font-size:0.78rem;color:var(--text-sub);margin-top:6px;">1 – 10 cartons</p>
+      <div style="background:linear-gradient(135deg,rgba(201,168,76,0.07),rgba(176,179,186,0.05));border:1.5px solid rgba(201,168,76,0.3);border-radius:16px;padding:28px 32px;margin-bottom:32px;">
+        <h3 style="font-size:1rem;font-weight:800;color:var(--accent-light);margin-bottom:6px;">Volume Pricing — The More You Order, The Less You Pay</h3>
+        <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:18px;">Price per carton is based on your total order quantity</p>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
+
+          <!-- Tier 1 — Silver -->
+          <div style="background:var(--bg-elevated);border:1px solid rgba(176,179,186,0.2);border-radius:12px;padding:20px 16px;text-align:center;position:relative;">
+            <span style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:#7a7d84;color:#fff;font-size:0.68rem;font-weight:800;padding:3px 10px;border-radius:100px;letter-spacing:0.06em;white-space:nowrap;">STANDARD</span>
+            <strong style="display:block;font-size:1.6rem;color:var(--silver-light);font-weight:900;letter-spacing:-0.03em;">$35</strong>
+            <span style="font-size:0.78rem;color:var(--text-muted);">per carton</span>
+            <p style="font-size:0.75rem;color:var(--silver-dark);margin-top:8px;font-weight:600;">1 – 10 cartons</p>
           </div>
-          <div style="background:var(--bg-elevated);border:1.5px solid var(--accent);border-radius:8px;padding:16px;text-align:center;">
-            <strong style="display:block;font-size:1.3rem;color:var(--accent-light);">$33</strong>
-            <span style="font-size:0.8rem;color:var(--text-muted);">per carton</span>
-            <p style="font-size:0.78rem;color:var(--text-sub);margin-top:6px;">11 – 25 cartons</p>
+
+          <!-- Tier 2 — Gold -->
+          <div style="background:linear-gradient(135deg,rgba(201,168,76,0.1),rgba(201,168,76,0.04));border:1.5px solid rgba(201,168,76,0.5);border-radius:12px;padding:20px 16px;text-align:center;position:relative;box-shadow:0 4px 24px rgba(201,168,76,0.12);">
+            <span style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#e2c06a,#c9a84c);color:#000;font-size:0.68rem;font-weight:800;padding:3px 10px;border-radius:100px;letter-spacing:0.06em;white-space:nowrap;">SAVE 6%</span>
+            <strong style="display:block;font-size:1.6rem;color:var(--accent-light);font-weight:900;letter-spacing:-0.03em;">$33</strong>
+            <span style="font-size:0.78rem;color:var(--text-muted);">per carton</span>
+            <p style="font-size:0.75rem;color:var(--accent);margin-top:8px;font-weight:600;">11 – 25 cartons</p>
           </div>
-          <div style="background:var(--bg-elevated);border-radius:8px;padding:16px;text-align:center;">
-            <strong style="display:block;font-size:1.3rem;color:#22c55e;">$26</strong>
-            <span style="font-size:0.8rem;color:var(--text-muted);">per carton</span>
-            <p style="font-size:0.78rem;color:var(--text-sub);margin-top:6px;">25+ cartons</p>
+
+          <!-- Tier 3 — Best Value -->
+          <div style="background:linear-gradient(135deg,rgba(201,168,76,0.14),rgba(201,168,76,0.05));border:1.5px solid rgba(201,168,76,0.7);border-radius:12px;padding:20px 16px;text-align:center;position:relative;box-shadow:0 4px 32px rgba(201,168,76,0.18);">
+            <span style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#e2c06a,#9a7c2e);color:#000;font-size:0.68rem;font-weight:800;padding:3px 10px;border-radius:100px;letter-spacing:0.06em;white-space:nowrap;">SAVE 26%</span>
+            <strong style="display:block;font-size:1.6rem;color:#e2c06a;font-weight:900;letter-spacing:-0.03em;">$26</strong>
+            <span style="font-size:0.78rem;color:var(--text-muted);">per carton</span>
+            <p style="font-size:0.75rem;color:var(--accent-light);margin-top:8px;font-weight:600;">25+ cartons</p>
           </div>
+
         </div>
       </div>
 
